@@ -23,11 +23,14 @@ function openPage(page, obj, ph) {
                         var str = document.body.innerHTML;
                         var reg = /jsonp\(([\s\S]+?)\)/g;
                         var data = JSON.parse(reg.exec(str)[1]);
+                        /*
                         if (data.gsz >= data.dwjz) {
                             return '+' + data.gszzl;
                         } else {
                             return '-' + data.gszzl;
                         }
+                        */
+                        return data.gszzl;
                     }
                 }, function(result) {
                     if (result.indexOf('-') !== -1) {
