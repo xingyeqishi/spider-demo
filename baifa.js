@@ -17,7 +17,8 @@ function openPage(page, obj, ph) {
         page.injectJs('http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', function() {
                 return page.evaluate(function() {
                     if (typeof $!== 'undefined' && $('.op-stockdynamic-cur')) {
-                        return $('.op-stockdynamic-cur .op-stockdynamic-cur-info').html().split(' ')[1].replace(/[()]/g, '');
+                        
+                        return $('.op-stockdynamic-cur-num').html() +'  '+  $('.op-stockdynamic-cur .op-stockdynamic-cur-info').html().split(' ')[1].replace(/[()]/g, '');
                     // 天天基金网
                     } else {
                         var str = document.body.innerHTML;
