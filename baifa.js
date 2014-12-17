@@ -4,6 +4,12 @@ var phantom = require('phantom');
 var colors = require('colors');
 var urlArr = require('./config.json');
 var i = 0;
+var debug = false;
+var argArr = process.argv.slice(2);
+
+if (argArr.indexOf('--debug') !== -1) {
+    debug = true;
+}
 
 phantom.create(function(ph) {
     return ph.createPage(function(page) {
@@ -32,9 +38,17 @@ function openPage(page, obj, ph) {
                     }
                 }, function(result) {
                     if (result.indexOf('-') !== -1) {
-                        console.log(colors.green(obj.name + result));
+                        if (debug) {
+                            console.log(obj.name + result);
+                        } else {
+                            console.log(colors.green(obj.name + result));
+                        }
                     } else {
-                        console.log(colors.red(obj.name + result));
+                        if (debug) {
+                            console.log(obj.name + result);
+                        } else {
+                            console.log(colors.red(obj.name + result));
+                        }
                     }
                     if (i < urlArr.length) {
                         openPage(page, urlArr[i], ph);
