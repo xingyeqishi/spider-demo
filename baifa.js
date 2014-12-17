@@ -18,26 +18,23 @@ function openPage(page, obj, ph) {
                 return page.evaluate(function() {
                     if (typeof $!== 'undefined' && $('.op-stockdynamic-cur')) {
                         
-                        return $('.op-stockdynamic-cur-num').html() +'  '+  $('.op-stockdynamic-cur .op-stockdynamic-cur-info').html().split(' ')[1].replace(/[()]/g, '');
+                        return $('.op-stockdynamic-cur .op-stockdynamic-cur-info').html().split(' ')[1].replace(/[()]/g, '') + '  ' + $('.op-stockdynamic-cur-num').html();
                     // 天天基金网
                     } else {
                         var str = document.body.innerHTML;
                         var reg = /jsonp\(([\s\S]+?)\)/g;
                         var data = JSON.parse(reg.exec(str)[1]);
-                        /*
                         if (data.gsz >= data.dwjz) {
-                            return '+' + data.gszzl;
+                            return '+' + data.gszzl +'%' + '  ' + data.gsz;
                         } else {
-                            return '-' + data.gszzl;
+                            return data.gszzl +'%' + '  ' + data.gsz;
                         }
-                        */
-                        return data.gsz + '  ' + data.gszzl +'%';
                     }
                 }, function(result) {
                     if (result.indexOf('-') !== -1) {
-                        console.log(colors.green(obj.name + ': '+ result));
+                        console.log(colors.green(obj.name + result));
                     } else {
-                        console.log(colors.red(obj.name + ': '+ result));
+                        console.log(colors.red(obj.name + result));
                     }
                     if (i < urlArr.length) {
                         openPage(page, urlArr[i], ph);
