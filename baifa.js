@@ -31,7 +31,7 @@ function openPage(page, obj, ph) {
                             return '-' + data.gszzl;
                         }
                         */
-                        return data.gszzl;
+                        return data.gsz + '  ' + data.gszzl +'%';
                     }
                 }, function(result) {
                     if (result.indexOf('-') !== -1) {
