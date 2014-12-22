@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Droppable - Simple photo manager</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <style>
+    .tmpl {
+        background: #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #aaa;
+    }
+    #left-con, #right-con {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        float: left;
+        margin-right: 10px;
+    }
+    #left-con li, #right-con li {
+        margin: 0 5px 5px 5px;
+        padding: 5px;
+        font-size: 1.2em;
+        width: 120px;
+    }
+
+
+#left-con .no-placeholder {
+    display: none;
+}
+
+#right-con .no-placeholder {
+    display: block;
+}
+  </style>
+</head>
+<body>
+<div>
+    <ul id="left-con" class="left-con connectedSortable">
+        <li data-type="1">A</li>
+        <li data-type="2">B</li>
+        <li data-type="3">c</li>
+        <li data-type="4">d</li>
+        <li data-type="5">e</li>
+        <li data-type="6">f</li>
+    </ul>
+    <ul id="right-con" class="right-con connectedSortable">
+        <li>item 0 </li>
+
+    </ul>
+    <div style="clear:both"></div>
+</div>
+<div class="J-item-tmpl" style="display:none">
+    <input type="text"/>
+</div>
+<div class="J-checkbox-tmpl" style="display:none">
+    <input type="checkbox"/>asdfasdf
+</div>
+<script>
+$( "#left-con").sortable({
+    connectWith: ".connectedSortable",
+    placeholder: 'no-placeholder',
+    helper: function (e, li) {
+        this.copyHelper = li.clone().insertAfter(li);
+        $(this).data('copied', false);
+        return li.clone();
+    },
+    stop: function () {
+        var copied = $(this).data('copied');
+        if (!copied) {
+            this.copyHelper.remove();
+        }
+        this.copyHelper = null;
+    }
+});
+$('#right-con').sortable({
+    receive: function(event, ui) {
+        ui.sender.data('copied', true);
+        showItem(ui.item);
+    }
+});
+function showItem(item) {
+    var type = item.data('type');
+    var cloneNode = null;
+    if (type === 1) {
+        cloneNode = $('.J-item-tmpl').html();
+    } else {
+        cloneNode = $('.J-checkbox-tmpl').html();
+    }
+    item.html(cloneNode);
+}
+</script>
+
+</body>
+</html>
