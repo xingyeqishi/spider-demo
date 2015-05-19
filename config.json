@@ -6,5 +6,8 @@
     {"name": "中小板指数            ", "url":"http://www.baidu.com/s?wd=%E4%B8%AD%E5%B0%8F%E6%9D%BF%E6%8C%87%E6%95%B0"},
     {"name": "中邮战略新兴产业      ", "url":"http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=590008"},
     {"name": "景顺长城沪深300增强   ", "url": "http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=000311"},
-    {"name": "银河定投宝中证腾安指数", "url":"http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=519677"}
+    {"name": "国投瑞银中证指数      ", "url":"http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=161217"},
+    {"name": "长盛生态环境          ", "url":"http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=000598"},
+    {"name": "银河定投宝中证腾安指数", "url":"http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=519677"},
+    {"name": "申万证券              ", "url":"http://fund.eastmoney.com/data/funddataforgznew.aspx?t=basewap&cb=jsonp&fc=163113"}
 ]
