@@ -4,7 +4,7 @@ var phantom = require('phantom');
 var colors = require('colors');
 var urlArr = require('./config.json');
 var i = 0;
-var debug = false;
+var debug = true;
 var argArr = process.argv.slice(2);
 
 if (argArr.indexOf('--debug') !== -1) {
